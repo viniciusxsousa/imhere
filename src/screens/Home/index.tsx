@@ -1,7 +1,11 @@
-import { View, Text, TextInput } from "react-native"
+import { View, Text, TextInput, TouchableOpacity } from "react-native"
 import { styles } from "./styles"
 
 export function Home() {
+    function handllerAddParticipant() {
+        console.log('Participante adicionado');
+    }
+
     return(
       <View style={styles.container}>
         <Text style={styles.eventName}>Nome do Evento</Text>
@@ -12,6 +16,13 @@ export function Home() {
           placeholderTextColor="#6b6b6b"
           style={styles.input}
         />
+        <TouchableOpacity 
+            style={styles.button}
+            onPress={handllerAddParticipant}
+        >
+            <Text style={styles.btnText} >+</Text>
+        </TouchableOpacity>
+
       </View>
     )
 }
