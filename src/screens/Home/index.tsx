@@ -1,10 +1,12 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native"
+import { View, Text, TextInput, TouchableOpacity, FlatList } from "react-native"
 
 import { Participants } from "../../components/Participants";
 
 import { styles } from "./styles"
 
 export function Home() {
+    const participants = ['Vinicius', 'Beatriz', 'Kiara', 'Maria', 'Giovanna', 'Cloves', 'Gustavo', 'João', 'Pablo', 'Erika']
+
     function handllerAddParticipant() {
         console.log('Participante adicionado');
     }
@@ -29,8 +31,17 @@ export function Home() {
             </TouchableOpacity>
         </View>
 
-        <Participants  name='Vinicius'/>
-        <Participants name='Beatriz' />
+        <FlatList
+          data={[]}
+          keyExtractor={item => item}
+          renderItem={({item}) => (
+            <Participants  name={item}/>
+          )}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={() => (
+            <Text style={styles.emptyList}>Ainda não temos participantes na sua lista de presença.</Text>
+          )}
+        />
 
       </View>
     )
