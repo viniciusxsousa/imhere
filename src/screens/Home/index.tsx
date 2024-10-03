@@ -18,7 +18,10 @@ export function Home() {
     function handllerRemoveParticipant(name: string) {
       Alert.alert('Participante', `Você gostaria de remover o participante ${name}?`, [
         {
-          text: 'Sim'
+          text: 'Sim',
+          onPress: () => {
+            setParticipants(prevState => prevState.filter(participant => participant !== name))
+          }
         },
         {
           text: 'Não'
