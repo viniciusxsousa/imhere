@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { View, Text, TextInput, TouchableOpacity, FlatList, Alert } from "react-native"
 
 import { Participants } from "../../components/Participants";
@@ -5,10 +7,12 @@ import { Participants } from "../../components/Participants";
 import { styles } from "./styles"
 
 export function Home() {
-    const participants = ['Vinicius', 'Beatriz', 'Kiara', 'Maria', 'Giovanna', 'Cloves', 'Gustavo', 'João', 'Pablo', 'Erika']
+    const [participants, setParticipants] = useState<string[]>([]);
+    const [newParticipants, setNewParticipants] = useState('');
 
-    function handllerAddParticipant() {
-        Alert.alert('Participante', 'Participante adicionado com sucesso');
+    function handllerAddParticipant(name: string) {
+        setParticipants(prevState => [...prevState, name])
+        setNewParticipants('');
     }
 
     function handllerRemoveParticipant(name: string) {
@@ -33,10 +37,12 @@ export function Home() {
               placeholder="Digite o nome do participante"
               placeholderTextColor="#6b6b6b"
               style={styles.input}
+              onChangeText={setNewParticipants}
+              value={newParticipants}
             />
             <TouchableOpacity 
                 style={styles.button}
-                onPress={handllerAddParticipant}
+                onPress={() => handllerAddParticipant(newParticipants)}
             >
                 <Text style={styles.btnText} >+</Text>
             </TouchableOpacity>
