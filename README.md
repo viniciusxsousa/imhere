@@ -24,3 +24,7 @@ Para rodar esse projeto, é necessário ter o node instalado. Também é necess�
 
 
   ### :desktop_computer: Previa do Projeto
+
+
+https://github.com/user-attachments/assets/0a59c8f1-edea-492e-b933-0cba751c91b1
+
